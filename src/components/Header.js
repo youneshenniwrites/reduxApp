@@ -1,24 +1,23 @@
 import React from "react";
-import { 
-  View,
-  StyleSheet
-} from "react-native";
+import { View, StyleSheet } from "react-native";
 
 import { TextInput, Button } from 'react-native-paper';
 
 const Header = (props) => (
-  <View>
-    <TextInput
-      label='Ingredient'
-      mode="outlined"
-    />
-    <Button
-      mode="contained"
-      onPress={() => console.log('Pressed')}
-      style={styles.button}>
-      add 
+    <View>
+      <TextInput
+        label='Ingredient'
+        mode="outlined"
+        autoCorrect={false}
+        autoCapitalize="none"
+      />
+      <Button
+        mode="contained"
+        onPress={() => console.log('Pressed')}
+        style={styles.button}>
+        add
     </Button>
-  </View>
+    </View>   
   )
 export default Header;
 

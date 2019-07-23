@@ -1,19 +1,21 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView } from 'react-native';
+import { StyleSheet, SafeAreaView, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 import Header from './src/components/Header';
-import Item from './src/components/Item';
 
 import { Divider } from 'react-native-paper';
+import ListItems from './src/components/ListItems';
 
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Header />
-      <Divider style={styles.divider}/>
-      <Item />
-    </SafeAreaView>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <SafeAreaView style={styles.container}>
+        <Header />
+        <Divider style={styles.divider} />
+        <ListItems />
+      </SafeAreaView>
+    </TouchableWithoutFeedback>
   );
 }
 

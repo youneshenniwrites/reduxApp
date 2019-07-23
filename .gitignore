@@ -11,3 +11,4 @@ web-report/
 
 yarn.lock
 assets
+package-lock.json

@@ -1,2 +1,2 @@
 export const LIST_ITEMS = 'LIST_ITEMS';
-export const NEW_ITEM = 'NEW_ITEM';
+export const ADD_ITEM = 'ADD_ITEM';

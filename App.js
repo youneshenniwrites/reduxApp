@@ -7,10 +7,8 @@ import {
 } from 'react-native';
 
 import { Provider } from 'react-redux';
-import { Divider } from 'react-native-paper';
 
-import Header from './src/components/Header';
-import ListItems from './src/components/ListItems';
+import Items from './src/components/Items';
 import store from './src/store';
 
 export default function App() {
@@ -18,9 +16,7 @@ export default function App() {
     <Provider store={store}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <SafeAreaView style={styles.container}>
-          <Header />
-          <Divider style={styles.divider} />
-          <ListItems />
+          <Items />
         </SafeAreaView>
       </TouchableWithoutFeedback>
     </Provider>

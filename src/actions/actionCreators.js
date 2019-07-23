@@ -1,10 +1,6 @@
-import { LIST_ITEMS, NEW_ITEM } from './actionTypes';
+import { ADD_ITEM } from './actionTypes';
 
-export const addItem = item => ({
-  type: NEW_ITEM,
-  payload: item,
-});
-
-export const listItems = () => ({
-  type: LIST_ITEMS,
+export const addItem = payload => ({
+  type: ADD_ITEM,
+  payload,
 });

@@ -6,19 +6,24 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 
+import { Provider } from 'react-redux';
 import { Divider } from 'react-native-paper';
+
 import Header from './src/components/Header';
 import ListItems from './src/components/ListItems';
+import store from './src/store';
 
 export default function App() {
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <SafeAreaView style={styles.container}>
-        <Header />
-        <Divider style={styles.divider} />
-        <ListItems />
-      </SafeAreaView>
-    </TouchableWithoutFeedback>
+    <Provider store={store}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <SafeAreaView style={styles.container}>
+          <Header />
+          <Divider style={styles.divider} />
+          <ListItems />
+        </SafeAreaView>
+      </TouchableWithoutFeedback>
+    </Provider>
   );
 }
 

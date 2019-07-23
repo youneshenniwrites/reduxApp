@@ -7,6 +7,7 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    // TODO: replace it with remove item
     case LIST_ITEMS:
       return {
         ...state,

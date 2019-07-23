@@ -7,13 +7,12 @@ import {
 import { TextInput, Button } from 'react-native-paper';
 
 const Header = (props) => (
-  <View style={styles.container}>
+  <View>
     <TextInput
       label='Ingredient'
       mode="outlined"
     />
     <Button
-      icon="add"
       mode="contained"
       onPress={() => console.log('Pressed')}
       style={styles.button}>
@@ -24,12 +23,9 @@ const Header = (props) => (
 export default Header;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10,
-  },
   button: {
     marginTop: 10,
+    marginBottom: 20,
     padding: 10
   }
 });

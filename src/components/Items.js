@@ -4,14 +4,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { TextInput, Button, Card, Divider, Title } from 'react-native-paper';
 
-import { addItem } from '../actions/actionCreators';
+import { addItem, removeItem } from '../actions/actionCreators';
 
 const Items = props => {
-  const [item, setItem] = React.useState('');
-  console.log(props.listItems.items);
+  const [itemName, setItemName] = React.useState('');
+
   const submitItem = () => {
-    if (item !== '') {
-      props.addItem({ item });
+    if (itemName !== '') {
+      props.addItem({ item: itemName });
+      setItemName('');
     } else {
       return 0;
     }
@@ -24,7 +25,8 @@ const Items = props => {
         mode="outlined"
         autoCorrect={false}
         autoCapitalize="none"
-        onChangeText={val => setItem(val)}
+        value={itemName}
+        onChangeText={val => setItemName(val)}
       />
       <Button
         mode="contained"
@@ -35,13 +37,13 @@ const Items = props => {
       </Button>
       <Divider style={styles.divider} />
       <ScrollView>
-        {props.listItems.items.map(foo => (
-          <Card style={styles.itemStyle} key={Math.random()}>
+        {props.listItems.items.map((item, index) => (
+          <Card style={styles.itemStyle} key={index}>
             <Card.Content>
-              <Title>{foo}</Title>
+              <Title>{item}</Title>
             </Card.Content>
             <Card.Actions>
-              <Button onPress={() => console.log('Removed')}>Remove</Button>
+              <Button onPress={() => props.removeItem(item)}>Remove</Button>
             </Card.Actions>
           </Card>
         ))}
@@ -52,6 +54,7 @@ const Items = props => {
 
 Items.prototypes = {
   addItem: PropTypes.func.isRequired,
+  removeItem: PropTypes.func.isRequired,
   listItems: PropTypes.array.isRequired,
 };
 
@@ -61,7 +64,7 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addItem }
+  { addItem, removeItem }
 )(Items);
 
 const styles = StyleSheet.create({

@@ -1,4 +1,4 @@
-import { ADD_ITEM } from '../actions/actionTypes';
+import { ADD_ITEM, REMOVE_ITEM } from '../actions/actionTypes';
 
 const initialState = {
   items: ['apples', 'bananas', 'oranges', 'pears'],
@@ -10,6 +10,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         items: [action.payload.item, ...state.items],
+      };
+    case REMOVE_ITEM:
+      return {
+        ...state,
+        items: state.items.filter(item => item !== action.payload),
       };
     default:
       return state;

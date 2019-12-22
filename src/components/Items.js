@@ -62,10 +62,7 @@ const mapStateToProps = state => ({
   listItems: state.items,
 });
 
-export default connect(
-  mapStateToProps,
-  { addItem, removeItem }
-)(Items);
+export default connect(mapStateToProps, { addItem, removeItem })(Items);
 
 const styles = StyleSheet.create({
   itemStyle: {

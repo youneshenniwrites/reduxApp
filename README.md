@@ -8,3 +8,31 @@
 
 In this app, I use redux to add and remove items and display them on the screen using [Redux hooks](https://react-redux.js.org/next/api/hooks) useSelector and useDispatch.
 
+## Run The Project
+
+* Clone the repo locally
+
+```
+git clone https://github.com/yhenni1989/reduxApp
+```
+
+* Navigate to the project root
+
+```
+cd reduxApp
+```
+
+* Install dependencies
+
+```
+npm install
+```
+
+* Run on the simulator
+
+``` 
+expo start --ios 
+// or 
+expo start --android
+```
+

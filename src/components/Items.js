@@ -1,17 +1,24 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView } from 'react-native';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { TextInput, Button, Card, Divider, Title } from 'react-native-paper';
+
+import { TextInput, Button, Card, Title } from 'react-native-paper';
 
 import { addItem, removeItem } from '../actions/actionCreators';
+import {
+  Container,
+  CardItem,
+  ButtonItem,
+  DividerItem,
+} from './styledComponents';
 
-const Items = props => {
+const Items = ({ list, add, remove }) => {
   const [itemName, setItemName] = React.useState('');
 
   const submitItem = () => {
     if (itemName !== '') {
-      props.addItem({ item: itemName });
+      add({ item: itemName });
       setItemName('');
     } else {
       return 0;
@@ -19,7 +26,7 @@ const Items = props => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <Container>
       <TextInput
         label="Ingredient"
         mode="outlined"
@@ -28,57 +35,30 @@ const Items = props => {
         value={itemName}
         onChangeText={val => setItemName(val)}
       />
-      <Button
-        mode="contained"
-        onPress={() => submitItem()}
-        style={styles.button}
-      >
-        add
-      </Button>
-      <Divider style={styles.divider} />
+      <ButtonItem mode="contained" onPress={() => submitItem()}>
+        add items
+      </ButtonItem>
+      <DividerItem />
       <ScrollView>
-        {props.listItems.items.map((item, index) => (
-          <Card style={styles.itemStyle} key={index}>
+        {list.items.map((item, index) => (
+          <CardItem key={index}>
             <Card.Content>
               <Title>{item}</Title>
             </Card.Content>
             <Card.Actions>
-              <Button onPress={() => props.removeItem(item)}>Remove</Button>
+              <Button onPress={() => remove(item)}>Remove</Button>
             </Card.Actions>
-          </Card>
+          </CardItem>
         ))}
       </ScrollView>
-    </View>
+    </Container>
   );
 };
 
-Items.prototypes = {
-  addItem: PropTypes.func.isRequired,
-  removeItem: PropTypes.func.isRequired,
-  listItems: PropTypes.array.isRequired,
-};
-
 const mapStateToProps = state => ({
-  listItems: state.items,
+  list: state.items,
 });
 
-export default connect(mapStateToProps, { addItem, removeItem })(Items);
+const mapDispatchToProps = { add: addItem, remove: removeItem };
 
-const styles = StyleSheet.create({
-  itemStyle: {
-    marginTop: 20,
-    padding: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#f58d',
-  },
-  button: {
-    marginTop: 10,
-    marginBottom: 20,
-    padding: 10,
-  },
-  divider: {
-    backgroundColor: '#f58d',
-    height: 1.5,
-  },
-});
+export default connect(mapStateToProps, mapDispatchToProps)(Items);

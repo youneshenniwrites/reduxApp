@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  SafeAreaView,
-  Keyboard,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import { Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 import { Provider } from 'react-redux';
 
@@ -15,22 +10,8 @@ export default function App() {
   return (
     <Provider store={store}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <SafeAreaView style={styles.container}>
-          <Items />
-        </SafeAreaView>
+        <Items />
       </TouchableWithoutFeedback>
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginLeft: 10,
-    marginRight: 10,
-  },
-  divider: {
-    backgroundColor: '#f58d',
-    height: 1.5,
-  },
-});

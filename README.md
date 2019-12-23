@@ -6,5 +6,5 @@
 
 ## Overview
 
-In this app, I use redux to add and remove items and display them on the screen using Redux hooks useSelector and useDispatch.
+In this app, I use redux to add and remove items and display them on the screen using [Redux hooks](https://react-redux.js.org/next/api/hooks) useSelector and useDispatch.
 

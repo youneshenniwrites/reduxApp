@@ -14,17 +14,18 @@ import {
 
 const Items = () => {
   const [itemName, setItemName] = useState('');
+
   const list = useSelector(state => state.items);
+
   const dispatch = useDispatch();
 
   const add = () => {
     if (itemName !== '') {
       dispatch(addItem({ item: itemName }));
       setItemName('');
-    } else {
-      return 0;
     }
   };
+
   const remove = item => dispatch(removeItem(item));
 
   return (

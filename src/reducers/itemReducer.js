@@ -1,7 +1,7 @@
 import { ADD_ITEM, REMOVE_ITEM } from '../actions/actionTypes';
 
 const initialState = {
-  items: ['apples', 'bananas', 'oranges', 'pears'],
+  items: ['Apples', 'Bananas', 'Oranges'],
 };
 
 export default function(state = initialState, action) {

@@ -8,17 +8,17 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const CardItem = styled(Card)`
-  margin-top: 20px;
-  padding: 5px;
+  margin-top: 24px;
+  padding: 8px;
   align-items: center;
   justify-content: center;
-  background-color: #f58d;
+  background-color: #f57c;
 `;
 
 export const ButtonItem = styled(Button)`
-  margin-top: 10px;
-  margin-bottom: 20px;
-  padding: 10px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  padding: 16px;
 `;
 
 export const DividerItem = styled(Divider)`

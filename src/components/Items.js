@@ -1,8 +1,7 @@
-/* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
-import { connect } from 'react-redux';
 
+import { useDispatch, useSelector } from 'react-redux';
 import { TextInput, Button, Card, Title } from 'react-native-paper';
 
 import { addItem, removeItem } from '../actions/actionCreators';
@@ -13,17 +12,20 @@ import {
   DividerItem,
 } from './styledComponents';
 
-const Items = ({ list, add, remove }) => {
-  const [itemName, setItemName] = React.useState('');
+const Items = () => {
+  const [itemName, setItemName] = useState('');
+  const list = useSelector(state => state.items);
+  const dispatch = useDispatch();
 
-  const submitItem = () => {
+  const add = () => {
     if (itemName !== '') {
-      add({ item: itemName });
+      dispatch(addItem({ item: itemName }));
       setItemName('');
     } else {
       return 0;
     }
   };
+  const remove = item => dispatch(removeItem(item));
 
   return (
     <Container>
@@ -35,7 +37,7 @@ const Items = ({ list, add, remove }) => {
         value={itemName}
         onChangeText={val => setItemName(val)}
       />
-      <ButtonItem mode="contained" onPress={() => submitItem()}>
+      <ButtonItem mode="contained" onPress={add}>
         add items
       </ButtonItem>
       <DividerItem />
@@ -55,10 +57,4 @@ const Items = ({ list, add, remove }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  list: state.items,
-});
-
-const mapDispatchToProps = { add: addItem, remove: removeItem };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Items);
+export default Items;
